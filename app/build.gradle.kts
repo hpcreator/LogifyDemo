@@ -64,4 +64,7 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     debugImplementation(libs.androidx.compose.ui.tooling)
+
+    implementation("com.github.hpcreator:LogifyDemo:v1.0.2")
+
 }

@@ -1,6 +1,7 @@
 package com.hpcreation.logify_android
 
 import com.hpcreation.logify_android.LogFormatter.toJsonOrString
+import com.hpcreation.logify_android.LogifyCore.logFormatted
 
 /** Default Logcat tag used when the caller does not supply one. */
 const val DEFAULT_TAG = "Logify"
@@ -13,9 +14,9 @@ fun logDebug(message: String, tag: String = DEFAULT_TAG) =
     LogifyCore.log(LogLevel.DEBUG, message, tag)
 
 /** Log a serializable object at DEBUG level (pretty JSON when possible). */
-internal inline fun <reified T> logDebug(value: T, tag: String = DEFAULT_TAG) {
+inline fun <reified T> logDebug(value: T, tag: String = DEFAULT_TAG) {
     val (body, isJson) = toJsonOrString(value)
-    LogifyCore.logFormatted(LogLevel.DEBUG, body, tag, isJson)
+    logFormatted(LogLevel.DEBUG, body, tag, isJson)
 }
 
 // ── INFO ─────────────────────────────────────────────────────
@@ -25,9 +26,10 @@ fun logInfo(message: String, tag: String = DEFAULT_TAG) =
     LogifyCore.log(LogLevel.INFO, message, tag)
 
 /** Log a serializable object at INFO level (pretty JSON when possible). */
-internal inline fun <reified T> logInfo(value: T, tag: String = DEFAULT_TAG) {
+inline fun <reified T> logInfo(value: T, tag: String = DEFAULT_TAG) {
+    if (!LoggerConfig.enabled) return
     val (body, isJson) = toJsonOrString(value)
-    LogifyCore.logFormatted(LogLevel.INFO, body, tag, isJson)
+    logFormatted(LogLevel.INFO, body, tag, isJson)  // ✅
 }
 
 // ── WARN ─────────────────────────────────────────────────────
@@ -37,9 +39,9 @@ fun logWarn(message: String, tag: String = DEFAULT_TAG) =
     LogifyCore.log(LogLevel.WARN, message, tag)
 
 /** Log a serializable object at WARN level (pretty JSON when possible). */
-internal inline fun <reified T> logWarn(value: T, tag: String = DEFAULT_TAG) {
+inline fun <reified T> logWarn(value: T, tag: String = DEFAULT_TAG) {
     val (body, isJson) = toJsonOrString(value)
-    LogifyCore.logFormatted(LogLevel.WARN, body, tag, isJson)
+    logFormatted(LogLevel.WARN, body, tag, isJson)
 }
 
 // ── ERROR ────────────────────────────────────────────────────
@@ -53,7 +55,7 @@ fun logError(message: String, throwable: Throwable, tag: String = DEFAULT_TAG) =
     LogifyCore.log(LogLevel.ERROR, message, tag, throwable)
 
 /** Log a serializable object at ERROR level (pretty JSON when possible). */
-internal inline fun <reified T> logError(value: T, tag: String = DEFAULT_TAG) {
+inline fun <reified T> logError(value: T, tag: String = DEFAULT_TAG) {
     val (body, isJson) = toJsonOrString(value)
-    LogifyCore.logFormatted(LogLevel.ERROR, body, tag, isJson)
+    logFormatted(LogLevel.ERROR, body, tag, isJson)
 }
