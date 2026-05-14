@@ -10,6 +10,7 @@ activityCompose = "1.13.0"
 kotlin = "2.3.21"
 composeBom = "2026.05.00"
 appcompat = "1.7.1"
+logifydemo = "v1.0.2"
 material = "1.13.0"
 
 [libraries]
@@ -30,6 +31,7 @@ androidx-compose-material3 = { group = "androidx.compose.material3", name = "mat
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+logifydemo = { module = "com.github.hpcreator:LogifyDemo", version.ref = "logifydemo" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
