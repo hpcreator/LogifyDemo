@@ -8,9 +8,9 @@ import android.util.Log
  * No initialization needed — reads state from [LoggerConfig] which is
  * itself populated from compile-time BuildConfig fields.
  */
-internal object LogifyCore {
+object LogifyCore {
 
-    fun log(
+    internal fun log(
         level    : LogLevel,
         message  : String,
         tag      : String,

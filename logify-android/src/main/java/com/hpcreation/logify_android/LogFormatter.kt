@@ -23,7 +23,7 @@ import java.util.Locale
  * }
  * ```
  */
-internal object LogFormatter {
+object LogFormatter {
 
     /** Thread-local SDF so we avoid synchronization overhead. */
     private val sdfThreadLocal = ThreadLocal.withInitial {
