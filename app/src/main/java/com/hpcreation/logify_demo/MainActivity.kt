@@ -26,7 +26,7 @@ class MainActivity : ComponentActivity() {
         logWarn("Cache is stale, refetching")
 
         val user = User(id = 1, name = "Harsh", email = "harsh@example.com")
-        //logInfo(user)
+        logInfo(user)
 
         try {
             throw RuntimeException("Simulated network failure")
