@@ -21,7 +21,7 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField("String", "LOGIFY_TIME_FORMAT", "\"yyyy-MM-dd HH:mm:ss.SSS\"")
-        buildConfigField("Int", "LOGIFY_JSON_INDENT", "4")
+        buildConfigField("int", "LOGIFY_JSON_INDENT", "4")
         buildConfigField("String", "LOGIFY_EMOJI_STYLE", "\"CLASSIC\"")
     }
 
