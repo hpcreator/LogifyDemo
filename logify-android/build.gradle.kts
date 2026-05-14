@@ -28,11 +28,8 @@ android {
         }
     }
 }
-
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
-    compilerOptions {
-        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11)
-    }
+kotlin {
+    jvmToolchain(11)
 }
 dependencies {
     implementation(libs.androidx.appcompat)
@@ -52,7 +49,6 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.hpcreation"
                 artifactId = "logify-android"
-                version = "0.1.0"
             }
         }
     }
