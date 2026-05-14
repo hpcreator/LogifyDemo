@@ -41,6 +41,7 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
 }
 
+/*
 publishing {
     publications {
         register<MavenPublication>("release") {
@@ -52,5 +53,17 @@ publishing {
     }
     repositories {
         mavenLocal()
+    }
+}*/
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
+                from(components["release"])
+                groupId    = "com.hpcreation"
+                artifactId = "logify-android"
+                version    = "0.1.0"
+            }
+        }
     }
 }
