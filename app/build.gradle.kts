@@ -19,16 +19,15 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-
-        buildConfigField("String", "LOGIFY_TIME_FORMAT", "\"yyyy-MM-dd HH:mm:ss.SSS\"")
-        buildConfigField("int", "LOGIFY_JSON_INDENT", "4")
-        buildConfigField("String", "LOGIFY_EMOJI_STYLE", "\"CLASSIC\"")
     }
 
     buildTypes {
         debug {
             // Logging fully ON in debug
             buildConfigField("Boolean", "LOGIFY_ENABLED", "true")
+            buildConfigField("String", "LOGIFY_TIME_FORMAT", "\"yyyy-MM-dd HH:mm:ss.SSS\"")
+            buildConfigField("int", "LOGIFY_JSON_INDENT", "4")
+            buildConfigField("String", "LOGIFY_EMOJI_STYLE", "\"CLASSIC\"")
         }
         release {
             buildConfigField("Boolean", "LOGIFY_ENABLED", "false")

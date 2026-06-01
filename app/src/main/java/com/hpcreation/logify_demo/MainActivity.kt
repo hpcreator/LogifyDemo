@@ -1,6 +1,7 @@
 package com.hpcreation.logify_demo
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -21,22 +22,6 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        logDebug("Activity created")
-        logInfo("Loading user data")
-        logWarn("Cache is stale, refetching")
-
-        /*val user = User(id = 1, name = "Harsh", email = "harsh@example.com")
-        logInfo(user)*/
-
-        try {
-            throw RuntimeException("Simulated network failure")
-        } catch (e: Exception) {
-            logError("Request failed", e)
-        }
-
-        // ── Custom tag ───────────────────────────────────────
-        logDebug("Custom tag log", tag = "BootFlow")
-
         setContent {
             LogifyDemoTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
@@ -47,6 +32,26 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.e("TAG", "onResume: ")
+        logDebug("Activity created")
+        logInfo("Loading user data")
+        logWarn("Cache is stale, refetching")
+
+        val user = User(id = 1, name = "Harsh", email = "harsh@example.com")
+        logInfo(user)
+
+        try {
+            throw RuntimeException("Simulated network failure")
+        } catch (e: Exception) {
+            logError("Request failed", e)
+        }
+
+        // ── Custom tag ───────────────────────────────────────
+        logDebug("Custom tag log", tag = "BootFlow")
     }
 }
 
